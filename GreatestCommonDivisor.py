@@ -1,0 +1,2 @@
+def GreatestCommonDivisor(n, m):
+    
