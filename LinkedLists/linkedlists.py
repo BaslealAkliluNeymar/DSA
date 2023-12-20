@@ -49,14 +49,49 @@ class linkedList():
                     print(f'This is what i found {temp.value}')
             else:
                 print("I didn't find anything!")
+        
+    def delete(self,location):
+        if self.head is None:
+            print("No Head! No Body! No Existence!") 
+        else:
+            if location == 0:
+                if self.head == self.tail:
+                    self.head = None
+                    self.tail = None
+                else:
+                    self.head = self.head.next
+            elif location == 1:
+                if self.head == self.tail:
+                    self.head = None
+                    self.tail = None
+                else:
+                    temp = self.head
+                    while temp.next is not None:
+                        if temp.next == self.tail:
+                            self.tail = temp
+                            temp.next = None
+                        temp = temp.next
+            else:
+                temp = self.head
+                for i in range(location):
+                    temp = temp.next
+                nextnode = temp.next
+                temp.next = nextnode.next
+
+
+    def Print(self):
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+            print(temp.value)
+                
+
 
             
 class Node():
     def __init__(self,value=None):
         self.value = value
         self.next = None
-    
-
 
 
 linkedlist = linkedList()
@@ -77,3 +112,5 @@ linkedlist.insert(4,3)
 print([node.value for node in linkedlist])
 linkedlist.traverse()
 linkedlist.search(5)
+linkedlist.delete(1)
+linkedlist.Print()
