@@ -38,13 +38,21 @@ class Clinkedlist:
                  self.tail = new_node  
             else:
                  temp = self.head
-                 for i in range(location):
+                 for i in range(location - 1):
                      temp = temp.next
                  nextnode = temp.next
                  new_node.next = nextnode
                  temp.next = new_node
-                
-                                  
+
+    def traverse(self):
+        temp = self.head
+        while temp is not None:
+            print(temp.value)
+            temp = temp.next
+            if temp.next == self.head:
+                yield temp
+                break
+            
 
                     
 
@@ -58,5 +66,11 @@ linkedlist = Clinkedlist()
 linkedlist.CreateClist(1)
 linkedlist.insert(12,1)
 linkedlist.insert(99,1)
+linkedlist.insert(99,1)
+linkedlist.insert(101,2)
+
 
 print([node.value for node in linkedlist])
+
+
+linkedlist.traverse()
