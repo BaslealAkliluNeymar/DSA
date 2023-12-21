@@ -8,6 +8,7 @@ class Clinkedlist:
         new_node.next  = new_node
         self.head = new_node
         self.tail = new_node
+        return "The CLL has been created!"
 
 class Node:
     def __init__(self,value=None):
