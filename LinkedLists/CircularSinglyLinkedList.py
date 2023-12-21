@@ -49,9 +49,17 @@ class Clinkedlist:
         while temp is not None:
             print(temp.value)
             temp = temp.next
-            if temp.next == self.head:
-                yield temp
+            if temp == self.tail.next:
                 break
+
+    def search(self,value):
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+            if temp == self.tail.next:
+                break
+            if temp.value == value:
+                print('{} is the value i found'.format(temp.value))
             
 
                     
@@ -68,6 +76,7 @@ linkedlist.insert(12,1)
 linkedlist.insert(99,1)
 linkedlist.insert(99,1)
 linkedlist.insert(101,2)
+linkedlist.search(12)
 
 
 print([node.value for node in linkedlist])
