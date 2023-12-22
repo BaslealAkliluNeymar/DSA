@@ -60,9 +60,38 @@ class Clinkedlist:
                 break
             if temp.value == value:
                 print('{} is the value i found'.format(temp.value))
-            
 
-                    
+    def delete(self,location):
+        if self.head is None:
+            print("Linked List doesnt exist!")
+        else:
+            if location == 0:
+                if self.tail == self.head:
+                    self.head.next = None
+                    self.head = None
+                    self.tail = None
+                else:
+                    self.tail.next = self.head.next
+                    self.head = self.head.next
+            elif location == 1:
+                if self.tail == self.head:
+                    self.head.next = None
+                    self.head = None
+                    self.tail = None
+                else:
+                    temp = self.head
+                    while temp is not None:
+                        if self.tail == temp.next:
+                            break
+                        temp = temp.next
+                    temp.next = self.head
+                    self.tail = temp
+            else:
+                temp = self.head
+                for i in range(location - 1):
+                    temp = temp.next
+                nextnode = temp.next
+                temp.next = nextnode.next
 
 
 class Node:
@@ -77,6 +106,7 @@ linkedlist.insert(99,1)
 linkedlist.insert(99,1)
 linkedlist.insert(101,2)
 linkedlist.search(12)
+linkedlist.delete(2)
 
 
 print([node.value for node in linkedlist])
