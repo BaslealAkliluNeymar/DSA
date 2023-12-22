@@ -76,6 +76,9 @@ class DLL:
             elif location == 1:
                 self.tail = self.tail.prev
                 self.tail.prev.next = None
+            elif location == 'z' or 'Z':
+                self.head = None
+                self.tail = None
             else:
                 temp = self.head
                 for i in range(location):
