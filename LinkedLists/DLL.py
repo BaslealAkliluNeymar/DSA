@@ -66,6 +66,28 @@ class DLL:
                 i+=1
 
 
+    def delete(self,location):
+        if self.head is None:
+            print("Linked list doesn't exist!")
+        else:
+            if location == 0:
+                self.head = self.head.next
+                self.head.prev = None
+            elif location == 1:
+                self.tail = self.tail.prev
+                self.tail.prev.next = None
+            else:
+                temp = self.head
+                for i in range(location):
+                    temp = temp.next
+                nextnode = temp.next
+                temp.next = nextnode.next
+                nextnode.next.prev = temp
+
+                
+
+
+
 
 
 dll = DLL()
@@ -83,15 +105,13 @@ dll.insert(23,1)
 dll.insert(45,1)
 dll.insert(2342,1)
 dll.insert(12,1)
-dll.insert(00,1)
+dll.insert(0,1)
 dll.insert(903,1)
 dll.insert(78,1)
 dll.insert(54,0)
 dll.insert(123131,4)
-
-dll.search(2342)
-dll.traverseFhead()
-dll.traverseFtail()
+dll.delete(0)
+dll.delete(0)
 
 
 
