@@ -1,16 +1,22 @@
+class Node:
+    def __init__(self, value=None):
+        self.prev = None
+        self.value = value
+        self.next = None
+
+
 class DLL:
     def __init__(self):
         self.head = None
         self.tail = None
+
     def __iter__(self):
         node = self.head
         while node:
             yield node
-            if node.next == self.head:
-                break
             node = node.next
 
-    def insert(self, value, location):
+    def insert(self,value,location):
         if self.head is None:
             print("Linked List doesnt exist")
         else:
@@ -26,20 +32,26 @@ class DLL:
                 self.tail = new_node
             else: 
                 temp = self.head
-                index = 0
-                while index < location - 1:
+                for i in range(location):
                     temp = temp.next
-                    index += 1
                 new_node.next = temp.next
                 new_node.prev = temp
                 new_node.next.prev = new_node
                 temp.next = new_node
 
-class Node:
-    def __init__(self, value=None):
-        self.prev = None
-        self.value = value
-        self.next = None
+
+    def traverseFhead(self):
+        temp = self.head
+        while temp.next is not None:
+            temp = temp.next
+            print(temp.value)
+    def traverseFtail(self):
+        temp = self.tail
+        while temp.prev != self.head:
+            temp = temp.prev
+            print(temp.value)
+
+
 
 
 dll = DLL()
@@ -61,7 +73,10 @@ dll.insert(00,1)
 dll.insert(903,1)
 dll.insert(78,1)
 dll.insert(54,0)
-dll.insert(129121313801,65)
+dll.insert(123131,4)
+
+dll.traverseFhead()
+dll.traverseFtail()
 
 
 
