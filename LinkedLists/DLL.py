@@ -53,6 +53,20 @@ class DLL:
 
 
 
+    def search(self,value):
+        if self.head is None:
+            print("Doubly Linked List doesn't exist")
+        else:
+            temp = self.head
+            i  = 0
+            while temp.next is not None:
+                temp = temp.next
+                if temp.value == value:
+                    print(f"Found the index of the value it is {i - 1} and the value is {temp.value}")
+                i+=1
+
+
+
 
 dll = DLL()
 node1 = Node(1)
@@ -75,6 +89,7 @@ dll.insert(78,1)
 dll.insert(54,0)
 dll.insert(123131,4)
 
+dll.search(2342)
 dll.traverseFhead()
 dll.traverseFtail()
 
