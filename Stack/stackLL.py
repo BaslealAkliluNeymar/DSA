@@ -2,22 +2,24 @@ class LL:
     def __init__(self):
         self.head = None
         self.tail = None
-
     def __iter__(self):
         node = self.head
         while node:
-            yield node 
+            yield node
             node = node.next
 
 class Node:
     def __init__(self,value=None):
         self.value = None
         self.next = None
-
+    
 
 class stack:
     def __init__(self):
         self.linkedlist = LL()
+
+    def __str__(self):
+        values = [str(x) for x in self.linkedlist]
         
 
     def push(self,value):
@@ -26,8 +28,8 @@ class stack:
             self.linkedlist.head = new_node
             new_node.next = None
         else:
-            new_node.next = self.head.next
-            self.head = new_node
+            new_node.next = self.linkedlist.head.next
+            self.linkedlist.head = new_node
     
     def pop(self):
         print(self.linkedlist.head)
@@ -49,6 +51,7 @@ class stack:
 
 customstack = stack()
 print(customstack.peek())
+print(stack)
 
 
             
