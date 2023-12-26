@@ -36,6 +36,13 @@ def inordertraveral(rootnode):
         inordertraveral(rootnode.left)
         print(rootnode.value)
         inordertraveral(rootnode.right)
+def postordertraversal(rootnode):
+    if not rootnode:
+        return
+    else:
+        postordertraversal(rootnode.right)
+        print(rootnode.value)
+        postordertraversal(rootnode.left)
      
            
     
@@ -50,4 +57,4 @@ insert(bst,80)
 insert(bst,100)
 
 
-inordertraveral(bst)
+postordertraversal(bst)
