@@ -20,10 +20,34 @@ def insert(rootnode ,value):
     return 'Node has been succesfully added!'
 
 
+
+def traverse(rootnode):
+    if not rootnode:
+        return 
+    else:
+        print(rootnode.value)
+        traverse(rootnode.left)
+        traverse(rootnode.right)
+
+def inordertraveral(rootnode):
+    if not rootnode:
+        return
+    else:
+        inordertraveral(rootnode.left)
+        print(rootnode.value)
+        inordertraveral(rootnode.right)
+     
            
     
 bst = BST(70)
-print(insert(bst,60))
-print(insert(bst,90))
-print(bst.left.value)
-print(bst.right.value)
+insert(bst,90)
+insert(bst,50)
+insert(bst,30)
+insert(bst,60)
+insert(bst,20)
+insert(bst,40)
+insert(bst,80)
+insert(bst,100)
+
+
+inordertraveral(bst)
