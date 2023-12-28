@@ -1,73 +1,54 @@
 class BST:
     def __init__(self,value):
-        self.value = value
         self.left = None
         self.right = None
-    
-def insert(rootnode ,value):
-    if rootnode.value is None:
-        rootnode.value = value
-    elif value <= rootnode.value:
-        if rootnode.left is None:
-            rootnode.left = BST(value)
+        self.value = value
+
+    def __str__(self):
+        return f"{self.value} {self.left} {self.right}"
+
+def insert(root, value):
+    if root.value is None:
+        root.value = value
+    elif value <=  root.value:
+        if root.left is None:
+            root.left = BST(value) 
         else:
-           insert(rootnode.left , value)
+            insert(root.left,value)     
     else:
-        if rootnode.right is None:
-            rootnode.right = BST(value)
+        if root.right is None:
+            root.right = BST(value)
         else:
-            insert(rootnode.right , value)
-    return 'Node has been succesfully added!'
+            insert(root.right,value)
+    
+    return "Node Succesfully Added!"
 
 
-
-def traverse(rootnode):
-    if not rootnode:
+def preordertraverse(root):
+    if root is None:
+        return
+    else:
+        print(root.value)
+        preordertraverse(root.left)
+        preordertraverse(root.right)
+def Inordertraversal(root):
+    if root in None:
         return 
     else:
-        print(rootnode.value)
-        traverse(rootnode.left)
-        traverse(rootnode.right)
+        Inordertraversal(root.left)
+        print(root.value)
+        Inordertraversal(root.right)
 
-def inordertraveral(rootnode):
-    if rootnode is None:
-        return
-    else:
-        inordertraveral(rootnode.left)
-        print(rootnode.value)
-        inordertraveral(rootnode.right)
-def postordertraversal(rootnode):
-    if not rootnode:
-        return
-    else:
-        postordertraversal(rootnode.right)
-        print(rootnode.value)
-        postordertraversal(rootnode.left)
-     
-def search(rootnode,value):
-    if rootnode.value == value:
-        print("The Value is Found!")
-    elif rootnode.value > value:
-        if rootnode.value == value:
-            print("The Value has been found")
-        else:
-            search(rootnode.left,value)
-    else:
-        if rootnode.value == value:
-            print("The value has been found")
-        else:
-            search(rootnode.right,value)
-    
+newTree = BST(None)
+insert(newTree,70)
+insert(newTree,50)
+insert(newTree,90)
+insert(newTree,30)
+insert(newTree,60)
+insert(newTree,80)
+insert(newTree,100)
+insert(newTree,20)
+insert(newTree,40)
 
-    
-bst = BST(70)
-insert(bst,90)
-insert(bst,50)
-insert(bst,30)
-insert(bst,60)
-insert(bst,20)
-insert(bst,40)
-insert(bst,80)
-insert(bst,100)
 
-print(search(bst,30))
+traverse(newTree)
