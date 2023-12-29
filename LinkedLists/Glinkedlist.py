@@ -37,14 +37,14 @@ class LL:
             new_node.next = None
             self.tail = new_node
 
-    def add(self, value):
-        new_node = Node(value)
-        if self.head is None:
-            self.head = new_node
-            self.tail = new_node
-        else:
-            self.tail.next = new_node
-            self.tail = new_node
+    # def add(self, value):
+    #     new_node = Node(value)
+    #     if self.head is None:
+    #         self.head = new_node
+    #         self.tail = new_node
+    #     else:ss
+    #         self.tail.next = new_node
+    #         self.tail = new_node
 
     def generate(self, n , min_value, max_value):
         self.head = None
@@ -52,6 +52,9 @@ class LL:
         for i in range(n):
             self.insertEnd(random.randint(min_value,max_value))
         return self
+    
+
+
 
 
 
@@ -66,10 +69,23 @@ class Node:
         return str(self.value)
 
 
-
+def rDuplicate(ll):
+    if ll.head is None:
+        return
+    else:
+        temp = ll.head
+        visited = set([temp.value])
+        while temp.next:
+            if temp.next.value in visited:
+                temp.next  = temp.next.next
+            else:
+                visited.add(temp.value)
+                temp = temp.next
+    return ll
 
 ll = LL()
-ll.generate(5 ,1, 10)
+ll.generate(18 ,1, 10)
+print(rDuplicate(ll))
 
 print(ll)
 print(len(ll))
