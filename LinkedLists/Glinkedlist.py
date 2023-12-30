@@ -71,20 +71,24 @@ class Node:
 
 def rDuplicate(ll):
     if ll.head is None:
-        return
+        return 
     else:
         temp = ll.head
-        visited = set([temp.value])
-        while temp.next:
-            if temp.next.value in visited:
-                temp.next  = temp.next.next
+        visited = set([])
+        while temp.next is not None:
+            if temp.value in visited:
+                temp.prev.next = temp.next.next
             else:
                 visited.add(temp.value)
-                temp = temp.next
+            temp = temp.next
     return ll
 
+
+    
 ll = LL()
+
 ll.generate(18 ,1, 10)
+print(ll.head)
 print(rDuplicate(ll))
 
 print(ll)
