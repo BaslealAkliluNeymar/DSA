@@ -78,6 +78,7 @@ def rDuplicate(ll):
         while temp.next is not None:
             if temp.value in visited:
                 temp.prev.next = temp.next.next
+                # Make it so theat the add and insertEnd Functions use the prev Varialbe
             else:
                 visited.add(temp.value)
             temp = temp.next
