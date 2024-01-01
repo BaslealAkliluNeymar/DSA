@@ -43,16 +43,14 @@ class LL:
             self.head = new_node
             self.tail = new_node
         else:
-            new_node.prev = self.tail.next
             self.tail.next = new_node
-            new_node.next = None
             self.tail = new_node
 
     def generate(self, n , min_value, max_value):
         self.head = None
         self.tail = None
         for i in range(n):
-            self.insertEnd(random.randint(min_value,max_value))
+            self.add(random.randint(min_value,max_value))
         return self
     
 
@@ -76,14 +74,17 @@ def rDuplicate(ll):
         return 
     else:
         temp = ll.head
-        visited = set([])
+        visited = set()
+        visited.add(temp.value)
         while temp.next:
             if temp.value in visited:
                 temp.next = temp.next.next
             else:
                 visited.add(temp.value)
                 temp = temp.next
-    return visited
+    return ll
+
+
 
 
     
