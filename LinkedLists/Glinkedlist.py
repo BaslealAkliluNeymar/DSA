@@ -37,14 +37,16 @@ class LL:
             new_node.next = None
             self.tail = new_node
 
-    # def add(self, value):
-    #     new_node = Node(value)
-    #     if self.head is None:
-    #         self.head = new_node
-    #         self.tail = new_node
-    #     else:ss
-    #         self.tail.next = new_node
-    #         self.tail = new_node
+    def add(self, value):
+        new_node = Node(value)
+        if self.head is None:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.prev = self.tail.next
+            self.tail.next = new_node
+            new_node.next = None
+            self.tail = new_node
 
     def generate(self, n , min_value, max_value):
         self.head = None
@@ -75,23 +77,20 @@ def rDuplicate(ll):
     else:
         temp = ll.head
         visited = set([])
-        while temp.next is not None:
+        while temp.next:
             if temp.value in visited:
-                temp.prev.next = temp.next.next
-                # Make it so theat the add and insertEnd Functions use the prev Varialbe
+                temp.next = temp.next.next
             else:
                 visited.add(temp.value)
-            temp = temp.next
-    return ll
+                temp = temp.next
+    return visited
 
 
     
 ll = LL()
 
 ll.generate(18 ,1, 10)
-print(ll.head)
+print(ll)
 print(rDuplicate(ll))
 
-print(ll)
-print(len(ll))
 print([node.value for node in ll])
