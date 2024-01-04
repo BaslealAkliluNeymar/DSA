@@ -8,4 +8,4 @@ def isPalndrome(n):
 
 
 
-print(isPalndrome(1321))
+print(isPalndrome(1321)) 

@@ -1,4 +1,3 @@
-from Queue import myfunc
 class queue:
     """
         An Implementation of a Queue Data Structure 
@@ -18,7 +17,7 @@ class queue:
         if len(self.queue) == 0:
             return "Nothing to Dequeue"
         else:
-            self.queue.pop()
+            return self.queue.pop()
     
     def peek(self):
         return self.queue[len(self.queue) - 1]
@@ -31,10 +30,6 @@ class queue:
     
     def delete(self):
         self.queue = []
-
-
-
-
 
 
 
@@ -69,6 +64,43 @@ def postordertraversal(node):
     print(node.data)
 
 def levelordertraversal(node):
-    print(node)
+    if not node:
+        return 
+    else:
+        q = queue()
+        q.Enqueue(node)
+        while not q.isEmpty():
+            x = q.Dequeue()
+            print(x.data)
+            if x.left is not None:
+                q.Enqueue(x.left)
+            if x.right is not None:
+                q.Enqueue(x.right)
 
-myfunc.deef()
+def searchnode(node,value):
+    if node:
+        if node.data == value:
+            print("Found it!")
+        elif value < node.data:
+            if node.left is not None:
+                searchnode(node.left,value)
+        else:
+            if node.right is not None:
+                searchnode(node.right,value)
+    else:
+        print("There is no node to begin with!")
+        
+            
+
+new_node = AVLNODE(10)
+x = AVLNODE(5)
+y = AVLNODE(15)
+c = AVLNODE(20)
+b = AVLNODE(4)
+
+new_node.left = x
+new_node.right = y
+x.left = b
+x.right = c
+searchnode(new_node,4)
+

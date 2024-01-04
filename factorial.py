@@ -8,5 +8,5 @@ def factorial(n):
         return 'Factorial of a negative number is not defined!'
 
 
-print(factorial(-5))
+
 
