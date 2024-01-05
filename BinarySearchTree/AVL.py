@@ -87,20 +87,78 @@ def searchnode(node,value):
         elif value > node.data:
             if node.right is not None:
                 searchnode(node.right,value)
-        
+
+
+def getheight(node):
+    if not node:
+        return 0
+    return node.height
+
+def rightRotate(node):
+    new_node = node.left
+    node.left = node.left.right
+    new_node.right = node
+    node.height = 1 + max(getheight(node.left), getheight(node.right))
+    new_node.height = 1 + max(getheight(new_node.left),getheight(new_node.right))
+    return new_node
+
+
+def leftRotate(node):
+    new_node = node.right
+    node.right = node.right.left
+    new_node.left = node
+    node.height = 1 + max(getheight(node.left), getheight(node.right))
+    new_node.height = 1 + max(getheight(new_node.left),getheight(new_node.right))
+    return new_node
+
+
+def getbalance(node):
+    if not node:
+        return 0
+    return getheight(node.left) - getheight(node.right)
+
+def insertnode(node,value):
+    if not node:
+        return AVLNODE(value)
+    else:
+        if node.data < value:
+            if node.left is None:
+                new_node = AVLNODE(node)
+                node.left = new_node
+            else:
+                insertnode(node.left ,value)
+        else:
+            if node.right is None:
+                new_node = AVLNODE(node)
+                node.right = new_node
+            else:
+                insertnode(node.right , value)
+
+        node.height = 1 + max(getheight(node.left),getheight(node.right))
+        balance = getbalance(node)
+
+        if balance > 1 and value < node.left.data:
+            #LL Condition
+            return rightRotate(node)
+        if balance > 1 and value > node.left.data:
+            #LR Condition
+            node.left = leftRotate(node.left)
+            return rightRotate(node)
+        if balance < -1 and value > node.right.data:
+            #RR Condition
+            return leftRotate(node)
+        if balance < -1 and value < node.right.data:
+            node.right = rightRotate(node.right)
+            return leftRotate(node)
+        return node
+
         
 
             
 
-new_node = AVLNODE(10)
-x = AVLNODE(5)
-y = AVLNODE(15)
-c = AVLNODE(20)
-b = AVLNODE(4)
+new_node = AVLNODE(5)
+new_node = insertnode(new_node,10)
+new_node = insertnode(new_node,15)
+new_node = insertnode(new_node,20)
 
-new_node.left = x
-new_node.right = y
-x.left = b
-x.right = c
-searchnode(new_node,19)
-
+levelordertraversal(new_node)
