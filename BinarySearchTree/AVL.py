@@ -82,14 +82,14 @@ def searchnode(node,value):
         if node.data == value:
             print("Found it!")
         elif value < node.data:
-            if node.left is not None:
+            if node.left is not None and node.left == value:
                 searchnode(node.left,value)
-        else:
+        elif value > node.data:
             if node.right is not None:
                 searchnode(node.right,value)
-    else:
-        print("There is no node to begin with!")
         
+        
+
             
 
 new_node = AVLNODE(10)
@@ -102,5 +102,5 @@ new_node.left = x
 new_node.right = y
 x.left = b
 x.right = c
-searchnode(new_node,4)
+searchnode(new_node,19)
 
