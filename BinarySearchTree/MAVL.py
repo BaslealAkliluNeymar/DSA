@@ -1,3 +1,38 @@
+
+class queue:
+    """
+        An Implementation of a Queue Data Structure 
+        using python lists.
+    """
+    def __init__(self):
+        self.queue = []
+
+    def __str__(self):
+        values = [str(x) for x in self.queue]
+        return "\n".join(values)
+
+    def Enqueue(self,value):
+        return self.queue.append(value)
+    
+    def Dequeue(self):
+        if len(self.queue) == 0:
+            return "Nothing to Dequeue"
+        else:
+            self.queue.pop()
+    
+    def peek(self):
+        return self.queue[len(self.queue) - 1]
+    
+
+    def isEmpty(self):
+        if len(self.queue) == 0:
+            return True
+        return False
+    
+    def delete(self):
+        self.queue = []
+
+
 class AVL:
     def __init__(self,value):
         self.value = value
@@ -85,18 +120,19 @@ def postordertraversal(node):
     postordertraversal(node.rigth)
     print(node.value)
 
+           
 
-   
+def levelordertraversal(node):
     
-node = AVL(10)
-insert(node,5)
-insert(node,11)
-insert(node,12)
-insert(node,10.5)
-insert(node,13)
-insert(node, 56)
-postordertraversal(node)
+node = AVL(70)
+insert(node,50)
+insert(node,90)
+insert(node,30)
+insert(node,60)
+insert(node,80)
+insert(node, 100)
+insert(node, 20)
+insert(node, 40)
+print(levelordertraversal(node))
 
-
-searchnode(node,156)
 
