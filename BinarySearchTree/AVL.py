@@ -157,8 +157,6 @@ def insertnode(node,value):
             
 
 new_node = AVLNODE(5)
-new_node = insertnode(new_node,10)
-new_node = insertnode(new_node,15)
-new_node = insertnode(new_node,20)
+insertnode(new_node,10)
 
 levelordertraversal(new_node)

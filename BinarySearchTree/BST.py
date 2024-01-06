@@ -10,7 +10,7 @@ class BST:
 def insert(root, value):
     if root.value is None:
         root.value = value
-    elif value <=  root.value:
+    elif value < root.value:
         if root.left is None:
             root.left = BST(value) 
         else:
@@ -31,13 +31,39 @@ def preordertraverse(root):
         print(root.value)
         preordertraverse(root.left)
         preordertraverse(root.right)
+
+
 def Inordertraversal(root):
-    if root in None:
+    if root is None:
         return 
     else:
         Inordertraversal(root.left)
         print(root.value)
         Inordertraversal(root.right)
+
+def postorderetraversal(root):
+    if root is None:
+        return 
+    else:
+        postorderetraversal(root.left)
+        postorderetraversal(root.right)
+        print(root.value)
+
+def search(root,value):
+    if root.value == value:
+        print(f"Found it!{root.value}")
+    elif value < root.value:
+        if root.left.value == value:
+            print(f"Found it {root.left.value}")
+        else:
+            search(root.left,value)
+    else:
+        if root.right.value == value:
+            print("found it")
+        else:
+            search(root.right,value)
+     
+
 
 newTree = BST(None)
 insert(newTree,70)
@@ -51,4 +77,4 @@ insert(newTree,20)
 insert(newTree,40)
 
 
-traverse(newTree)
+search(newTree, 30)
