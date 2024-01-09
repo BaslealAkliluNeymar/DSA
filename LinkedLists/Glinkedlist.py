@@ -71,24 +71,24 @@ def rDuplicate(ll):
         return 
     else:
         temp = ll.head
-        visited = set()
-        visited.add(temp.value)
+        visited = set([temp.value])
         while temp.next:
-            if temp.value in visited:
+            if temp.next.value in visited:
                 temp.next = temp.next.next
             else:
-                visited.add(temp.value)
+                visited.add(temp.next.value)
                 temp = temp.next
-    return ll
+        return ll
+   
 
 
 
 
     
 ll = LL()
-
 ll.generate(18 ,1, 10)
 print(ll)
+
 print(rDuplicate(ll))
 
 print([node.value for node in ll])
