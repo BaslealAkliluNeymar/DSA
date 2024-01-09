@@ -82,13 +82,38 @@ def rDuplicate(ll):
    
 
 
-
+def addtoS(ll):
+    if ll is None:
+        return 
+    else:
+        temp = ll.head
+        value = set([temp.value])
+        while temp.next:
+            if temp.next.value in value:
+                temp.next = temp.next.next
+            else:
+                value.add(temp.next.value)
+                temp = temp.next
+        return ll
+    
+def Nth(ll , n):
+    temp = ll.head
+    k = 0 
+    while k < n - 1:
+        temp = temp.next
+        k += 1
+    arr = []
+    while temp.next:
+        arr.append(temp.value)
+        temp = temp.next
+    
+    return arr
+ 
 
     
 ll = LL()
 ll.generate(18 ,1, 10)
 print(ll)
-
-print(rDuplicate(ll))
+print(Nth(ll,3))
 
 print([node.value for node in ll])
