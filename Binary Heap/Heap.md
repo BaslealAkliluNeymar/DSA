@@ -21,3 +21,23 @@ In the case of Priority Queues , It is significantly hard to insert and increbly
 
 So in Deletion we can just delete the very last element 
 while in insertion  , we would have to iterate to the index of the biggest item and replace that and all the others , we have to shift all over again. and this creates a O(N) time complexity. A priority queue or a queue are abstract data structures because they are made from other primitive data structures.
+
+
+The heap has something called a last node. A heap’s last node is the rightmost
+node in its bottom level.
+
+#A Heap is used to implement Priority Queues
+
+The Heap has two primary operations:
+    ##Insertion
+        The efficiency of inserting into a heap is O(log N).
+    ##Deletion
+        The first thing to know about deleting a value from a heap is that we only ever delete the root node.
+
+        To delete it, we overwrite the root by placing the last node there instead.
+
+
+
+Because finding the last node is so critical to the heap’s operations, and we want to make sure that finding the last node is efficient, heaps are usually implemented using arrays.
+
+    !(Array.PNG)
