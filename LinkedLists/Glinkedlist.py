@@ -109,11 +109,27 @@ def Nth(ll , n):
     
     return arr
  
+def part(ll,x):
+    lf = LL()
+    temp = ll.head
+    lf.head = ll.head
+    lf.tail = ll.head
+    templf = lf.head 
+    while temp.next:
+        if temp.value > x:
+            lf.tail = temp 
+            lf.tail.next = None
+            temp = temp.next
+        else:
+            templf.next = ll.head.next
+            lf.head = templf
+    return lf
 
     
 ll = LL()
 ll.generate(18 ,1, 10)
-print(ll)
-print(Nth(ll,3))
 
-print([node.value for node in ll])
+print(ll)
+print(part(ll,4))
+
+# print([node.value for node in ll])
